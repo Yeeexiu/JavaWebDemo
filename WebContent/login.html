@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物理实验</title>
+    <link href="bootstrap.min.css" type="text/css" rel="stylesheet">
+    <style>
+        body{
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height: 100%;
+            background-size:cover;
+        }
+        p{
+            text-align: center;
+        }
+
+        #login{
+            position: absolute;
+            left:55%;
+            top:16%;
+            width: 400px;
+            height: 400px;
+            z-index: 100;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #login:before{
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            z-index: -1;
+            -webkit-filter: blur(20px);
+            filter: blur(20px);
+            margin: -30px;
+            background: url(2.jpg) center top;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 27px;
+            border-bottom: 2px solid white;
+            padding-bottom: 15px;
+
+        }
+        form{
+            padding: 0px 50px 10px 50px;
+            position: relative;
+        }
+        .prompt{
+            float: left;
+            /*margin-top: 10px;*/
+            color:darkorange;
+        }
+        .form-control{
+            display: inline;
+        }
+        input {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        #userNum,#userPwd{
+            height: 44px;
+            font-size: 16px;
+        }
+        #btn{
+            font-size: 17px;
+            height: 40px;
+            position: absolute;
+            width:250px;
+            left: 50%;
+            margin-left: -125px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body background="2.jpg">
+<div id="login">
+    <h1>用户登录</h1>
+    <form method="post" action="login.jsp">
+
+            <span class="prompt" id="pro1">&nbsp;</span>
+            <input type="text" placeholder="账号" class="form-control" id="userNum" name="userNum" autofocus>
+
+            <div class="prompt" id="pro2">&nbsp;</div>
+            <input type="password" placeholder="密码" class="form-control" id="userPwd" name="userPwd">
+
+
+        <input type="button" value="登录" class="form-control btn-info" id="btn" onclick="check()">
+    </form>
+</div>
+
+<script>
+    function check(){
+        if(document.getElementById("userNum").value != ""){
+            document.getElementById("pro1").innerHTML="&nbsp";
+        }
+        if(document.getElementById("userPwd").value != ""){
+            document.getElementById("pro2").innerHTML="&nbsp";
+
+        }
+        if(document.getElementById("userNum").value == ""){
+            document.getElementById("pro1").innerHTML="* 请输入账号";
+            location.href("#pro1");
+            return false;
+        }
+        if(document.getElementById("userPwd").value == ""){
+            document.getElementById("pro2").innerHTML="* 请输入密码";
+            location.href("#pro2");
+            return false;
+        }
+	    document.forms[0].submit();
+    }
+</script>
+</body>
+</html>
